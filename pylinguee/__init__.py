@@ -23,8 +23,10 @@ class Linguee:
         for idrow, row in enumerate(rows):
             hl_row = {}
             for idx, col in enumerate(row.find_all('td')):
+                wrap = col.find('div', class_='wrap')
+                visible_elements = [ el.extract() for el in wrap.find_all(True,{'class': ['shortened_begin','source_url_spacer','source_url']}) ]
                 hl_text = ''.join([ b.text for b in col.find_all('b') ])
-                hl_row[languages[idx]] = hl_text
+                hl_row[languages[idx]] = wrap.text
             highlights.append(hl_row)
         return highlights
 
