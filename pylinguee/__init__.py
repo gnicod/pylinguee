@@ -1,7 +1,6 @@
 import json, sys
 from bs4 import BeautifulSoup
 from urllib.request import urlopen
-from googletrans import Translator
 
 class Linguee:
 
